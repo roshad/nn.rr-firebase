@@ -4,6 +4,12 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import {compose} from 'redux'
+import {reduxFirestore,getFirestore} from 'redux-firestore'
+import {reactReduxFirebase,getFirebase} from 'react-redux-firebase'
+
+
+const store = 
 
 ReactDOM.render(<App />, document.getElementById('root'));
 
