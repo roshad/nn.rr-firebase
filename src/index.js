@@ -29,10 +29,6 @@ ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementB
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
 
-const createProject = (project) => (dispatch,getState ,{ getFirestore, getFirebase }) => {
-    const fireStore = getFirestore()
-    fireStore.collection('project').add({ mother:'die' }).then(()=>console.log('good'))    
-}
 
-store.dispatch(createProject())
+
 

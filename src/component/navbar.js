@@ -10,7 +10,7 @@ function Navbar(props) {
                     <Link to='' class="brand-logo">PMS</Link>
 
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="sass.html">Sass</a></li>
+                        
                         <li><a href="badges.html">Components</a></li>
                         <li><a href="collapsible.html">JavaScript</a></li>
                     </ul>
@@ -26,7 +26,7 @@ function Navbar(props) {
 function In(props) {
     return (
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><Link >New Project</Link></li>
+            <li><Link to="newProject">new Project</Link></li>
             <li><Link >Log Out</Link></li>
             <li><Link className='btn-floating'>Avatar</Link></li>
         </ul>
