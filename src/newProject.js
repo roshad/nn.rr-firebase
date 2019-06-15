@@ -2,7 +2,7 @@ import React from 'react';
 
 import {connect} from 'react-redux'
 
-import {creatorProject} from '../creatorProject'
+import {creatorProject} from './newProjectCreator'
 class NewProject extends React.Component {
     state = {form:{}}
     handleChange = (e) => {

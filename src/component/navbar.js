@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom'
 
 function Navbar(props) {
     return (
-        <nav>
-            <div class='navbar-wrapper'>
+        <nav className='blue'>
+            <div class='navbar-wrapper '>
                 <div class="container">
                     <Link to='' class="brand-logo">PMS</Link>
 
@@ -26,7 +26,9 @@ function Navbar(props) {
 function In(props) {
     return (
         <ul id="nav-mobile" class="right hide-on-med-and-down">
-            <li><Link >New Project</Link></li>
+            <li><Link to='/Dashboard' >Dashboard</Link></li>
+            <li><Link to='/newProject' >New Project</Link></li>
+            
             <li><Link >Log Out</Link></li>
             <li><Link className='btn-floating'>Avatar</Link></li>
         </ul>
