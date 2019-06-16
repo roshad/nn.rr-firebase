@@ -1,9 +1,8 @@
 import React from 'react';
 
 import {connect} from 'react-redux'
-import { firestoreConnect } from 'react-redux-firebase';
+import { firestoreConnect} from 'react-redux-firebase'
 import { compose } from 'redux';
-import { withFirebase } from 'react-redux-firebase'
 
 class Dashboard extends React.Component {
     
@@ -34,10 +33,13 @@ function ProjectCard (props) {
     
 }
 
-const stP=(state)=>console.log(state)
+const stP=(state)=>{
+    console.log(state)
+    return {}
+}
 
 
 export default compose(
-    connect(stP),
-    firestoreConnect([{collection:'project'}])
+    firestoreConnect(()=>[{collection:'project'}]),   
+    connect(stP)
 )(Dashboard);
