@@ -2,7 +2,8 @@ import React from 'react';
 
 import {connect} from 'react-redux'
 import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from '../../../../AppData/Local/Microsoft/TypeScript/3.5/node_modules/redux';
+import { compose } from 'redux';
+import { withFirebase } from 'react-redux-firebase'
 
 class Dashboard extends React.Component {
     
