@@ -17,8 +17,8 @@ class NewProject extends React.Component {
             <div className='container'>
                 <form onSubmit={this.handleSubmit}>
                     <div className="input-field">
-                        <label htmlFor='name' >name</label>
-                        <input id='name' type="text" onChange={this.handleChange}></input>
+                        <label htmlFor='name' >title</label>
+                        <input id='title' type="text" onChange={this.handleChange}></input>
                     </div>
                     <div className="input-field">
                         <label htmlFor='content' >content</label>
