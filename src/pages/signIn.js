@@ -45,10 +45,11 @@ class SignIn extends React.Component {
 const creatorSignIn = credentials => (
     dispatch,
     getState,
-    { getFirebase, getFirestore }
+    { getFirebase}
 ) => {
-    const fireStore = getFirestore();
-    fireStore
+    const firebase = getFirebase();
+    
+    firebase
         .auth()
         .signInWithEmailAndPassword(credentials.email, credentials.password);
 };
