@@ -1,17 +1,28 @@
 import React from "react";
 
+import { compose } from "redux";
+
 import { connect } from "react-redux";
+import { withFirebase } from "react-redux-firebase";
 
 class SignIn extends React.Component {
-    state = { form: {} };
+    state = { credentials: {} };
     handleChange = e => {
         this.setState({
-            form: { ...this.state.form, [e.target.id]: e.target.value }
+            credentials: {
+                ...this.state.credentials,
+                [e.target.id]: e.target.value
+            }
         });
     };
     handleSubmit = e => {
         e.preventDefault();
-        this.props.dispatch(this.state.form);
+
+        this.props.firebase
+            .login(this.state.credentials)
+            
+
+        console.log(this.props.storeState);
     };
     render() {
         return (
@@ -42,20 +53,12 @@ class SignIn extends React.Component {
     }
 }
 
-const creatorSignIn = credentials => (
-    dispatch,
-    getState,
-    { getFirebase}
-) => {
-    const firebase = getFirebase();
-    
-    firebase
-        .auth()
-        .signInWithEmailAndPassword(credentials.email, credentials.password);
-};
+const stP = state => ({ storeState: state });
 
-const dtP = dispatch=>({dispatch: credentials => dispatch(creatorSignIn(credentials))})
-export default connect(
-    null,
-    dtP
+export default compose(
+    withFirebase,
+    connect(
+        stP,
+        null
+    )
 )(SignIn);
