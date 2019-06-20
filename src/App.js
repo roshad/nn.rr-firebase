@@ -1,7 +1,5 @@
 import React from "react";
 
-import { BrowserRouter as Router, Route } from "react-router-dom";
-
 
 
 import Navbar from "./navbar";
@@ -24,6 +22,8 @@ import { firebase } from "./configFb";
 import { createStore, applyMiddleware, compose } from "redux";
 import reducer from "./reducer";
 import thunk from "redux-thunk";
+
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 const createStoreWithFirebase = compose(reduxFirestore(firebase))(createStore);
 const store = createStoreWithFirebase(
