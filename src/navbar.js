@@ -8,9 +8,9 @@ function Navbar(props) {
             <div class='navbar-wrapper '>
                 <div class="container">
                     <Link to='' class="brand-logo">PMS</Link>
-
+                    
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                        <li><a href="sass.html">Sass</a></li>
+                        <li><Link to='in'>Sign In</Link></li>
                         <li><a href="badges.html">Components</a></li>
                         <li><a href="collapsible.html">JavaScript</a></li>
                     </ul>

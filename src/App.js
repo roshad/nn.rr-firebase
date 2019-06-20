@@ -2,10 +2,12 @@ import React from "react";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import NewProject from "./newProject";
 
-import Navbar from "./component/navbar";
-import Dashboard from "./dashboard";
+
+import Navbar from "./navbar";
+import Dashboard from "./pages/dashboard";
+import NewProject from "./pages/newProject";
+import SignIn from './pages/signIn'
 
 import { Provider } from "react-redux";
 
@@ -46,6 +48,7 @@ function App() {
           </div>
           <Route path="/newProject" component={NewProject} />
           <Route path="/Dashboard" component={Dashboard} />
+          <Route path="/in" component={SignIn} />
         </Router>
       </ReactReduxFirebaseProvider>
     </Provider>

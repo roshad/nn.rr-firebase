@@ -34,6 +34,17 @@ function ProjectCard(props) {
     );
 }
 
+function ProjectDetial(props) {
+    return (
+        <div class="card blue lighten-2">
+            <div class="card-content ">
+                <span class="card-title">{props.title}</span>
+                <p>{props.content}</p>
+            </div>
+        </div>
+    );
+}
+
 const stP = state => {
     //console.log(state)
     return { projects: state.firestore.ordered.project };
