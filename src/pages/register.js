@@ -19,7 +19,7 @@ class Register extends React.Component {
         e.preventDefault();
         
         
-        const {password,username,email} = this.state.form
+        const {password,username,email} = this.state.form 
         this.props.firebase
             .createUser({password,email},{username,email})        
     };
