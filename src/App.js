@@ -4,6 +4,7 @@ import Navbar from "./navbar";
 import Dashboard from "./pages/dashboard";
 import NewProject from "./pages/newProject";
 import SignIn from "./pages/signIn";
+import Register from "./pages/register";
 
 import { Provider } from "react-redux";
 
@@ -23,6 +24,8 @@ import thunk from "redux-thunk";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
+import PrivateRoute from './PrivateRoute'
+
 const createStoreWithFirebase = compose(reduxFirestore(firebase))(createStore);
 const store = createStoreWithFirebase(
     reducer,
@@ -32,8 +35,9 @@ const store = createStoreWithFirebase(
 
 const rrfProps = {
     firebase,
-    config: { userProfile: "users" },
+    config: { userProfile: "profile" },
     dispatch: store.dispatch,
+    attachAuthIsReady: true,
     createFirestoreInstance // <- needed if using firestore
 };
 
@@ -45,9 +49,10 @@ function App() {
                     <div className="App">
                         <Navbar />
                     </div>
-                    <Route path="/newProject" component={NewProject} />
-                    <Route path="/Dashboard" component={Dashboard} />
+                    <PrivateRoute path="/newProject" component={NewProject} />
+                    <PrivateRoute path="/Dashboard" component={Dashboard} />
                     <Route path="/in" component={SignIn} />
+                    <Route path="/register" component={Register} />
                 </Router>
             </ReactReduxFirebaseProvider>
         </Provider>

@@ -5,27 +5,28 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { withFirebase } from "react-redux-firebase";
 
-class SignIn extends React.Component {
-    state = { credentials: {} };
+class Register extends React.Component {
+    state = { form: {} };
     handleChange = e => {
         this.setState({
-            credentials: {
-                ...this.state.credentials,
+            form: {
+                ...this.state.form,
                 [e.target.id]: e.target.value
             }
         });
     };
     handleSubmit = e => {
         e.preventDefault();
-        console.log(this.props.firebase);
         
+        
+        const {password,username,email} = this.state.form
         this.props.firebase
-            .login(this.state.credentials)        
+            .createUser({password,email},{username,email})        
     };
     render() {
         return (
             <div className="container">
-                <form className='white' onSubmit={this.handleSubmit}>
+                <form onSubmit={this.handleSubmit}>
                     <div className="input-field">
                         <label>email</label>
                         <input
@@ -42,6 +43,14 @@ class SignIn extends React.Component {
                             onChange={this.handleChange}
                         />
                     </div>
+                    <div className="input-field">
+                        <label>username</label>
+                        <input
+                            id="username"                            
+                            onChange={this.handleChange}
+                        />
+                    </div>
+                    
                     <button className="waves-effect waves-light btn">
                         Submit
                     </button>
@@ -55,4 +64,4 @@ class SignIn extends React.Component {
 
 export default compose(
     withFirebase,    
-)(SignIn);
+)(Register);
