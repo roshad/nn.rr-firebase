@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 
 const PrivateRoute = ({ isEmpty, ...rest }) => {
-    return isEmpty ? <Redirect to="/in" /> : <Route {...rest} />;
+    return isEmpty ? <Redirect to="" /> : <Route {...rest} />;
 };
 
 const mapStateToProps = state => ({

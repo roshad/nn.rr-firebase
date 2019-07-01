@@ -7,6 +7,8 @@ import { connect } from "react-redux";
 import { compose } from "redux";
 import { withFirebase } from "react-redux-firebase";
 
+import moment from 'moment'
+
 class Navbar extends React.Component {
     render() {
         const { isLoaded, isEmpty } = this.props.auth;
@@ -23,7 +25,7 @@ class Navbar extends React.Component {
                         ) : isEmpty ? (
                             <Out />
                         ) : (
-                            <In firebase={this.props.firebase} />
+                            <In firebase={this.props.firebase} username={this.props.username} />
                         )}
                     </div>
                 </div>
@@ -46,7 +48,7 @@ function In(props) {
                 <Link onClick={() => props.firebase.logout()}>Log Out</Link>
             </li>
             <li>
-                <Link className="btn-floating">Avatar</Link>
+                <Link className="btn-floating">{props.username}</Link>
             </li>
         </ul>
     );
@@ -75,7 +77,12 @@ function Loading(props) {
     );
 }
 
-const stp = ({ firebase: { auth } }) => ({ auth });
+const stp = (state) => {
+    console.log(state);
+    console.log(moment().format('[Y]YY[M]MM[D]DD'));
+    
+    return { username:state.firebase.profile.username,auth:state.firebase.auth }
+};
 
 export default compose(
     withFirebase,

@@ -11,7 +11,7 @@ class NewProject extends React.Component {
     };
     handleSubmit = e => {
         e.preventDefault();
-        this.props.dispatch(this.state.form);
+        this.props.dispatch({...this.state.form,createTime:new Date()});
     };
     render() {
         return (
@@ -41,19 +41,6 @@ class NewProject extends React.Component {
         );
     }
 }
-
-const creatorProject = form => (
-    dispatch,
-    getState,
-    { getFirebase, getFirestore }
-) => {
-    const fireStore = getFirestore();
-    fireStore.collection("project").add(form);
-};
-
-const dtP = dispatch => {
-    return { dispatch: form => dispatch(creatorProject(form)) };
-};
 
 export default connect(
     null,

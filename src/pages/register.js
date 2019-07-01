@@ -21,7 +21,8 @@ class Register extends React.Component {
         
         const {password,username,email} = this.state.form 
         this.props.firebase
-            .createUser({password,email},{username,email})        
+            .createUser({password,email},{username,email})
+            .then(()=>window.location.href = 'Dashboard')        
     };
     render() {
         return (
@@ -46,7 +47,8 @@ class Register extends React.Component {
                     <div className="input-field">
                         <label>username</label>
                         <input
-                            id="username"                            
+                            id="username"
+                            type='text'                            
                             onChange={this.handleChange}
                         />
                     </div>

@@ -32,10 +32,14 @@ const store = createStoreWithFirebase(
     applyMiddleware(thunk.withExtraArgument({getFirestore }))
 );
 
+const rrfConfig ={
+    useFirestoreForProfile: true,
+    userProfile: "profile"
+}
 
 const rrfProps = {
     firebase,
-    config: { userProfile: "profile" },
+    config: rrfConfig,
     dispatch: store.dispatch,
     attachAuthIsReady: true,
     createFirestoreInstance // <- needed if using firestore
