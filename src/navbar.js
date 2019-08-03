@@ -77,12 +77,7 @@ function Loading(props) {
     );
 }
 
-const stp = (state) => {
-    console.log(state);
-    console.log(moment().format('[Y]YY[M]MM[D]DD'));
-    
-    return { username:state.firebase.profile.username,auth:state.firebase.auth }
-};
+const stp = (state) => ({ username:state.firebase.profile.username,auth:state.firebase.auth });
 
 export default compose(
     withFirebase,

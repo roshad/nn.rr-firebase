@@ -24,18 +24,18 @@ import thunk from "redux-thunk";
 
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import PrivateRoute from './PrivateRoute'
+import PrivateRoute from "./PrivateRoute";
 
 const createStoreWithFirebase = compose(reduxFirestore(firebase))(createStore);
 const store = createStoreWithFirebase(
     reducer,
-    applyMiddleware(thunk.withExtraArgument({getFirestore }))
+    applyMiddleware(thunk.withExtraArgument({ getFirestore }))
 );
 
-const rrfConfig ={
+const rrfConfig = {
     useFirestoreForProfile: true,
     userProfile: "profile"
-}
+};
 
 const rrfProps = {
     firebase,

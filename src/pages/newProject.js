@@ -1,7 +1,7 @@
 import React from "react";
-
+import { withFirestore } from "react-redux-firebase";
+import { compose } from "redux";
 import { connect } from "react-redux";
-
 class NewProject extends React.Component {
     state = { form: {} };
     handleChange = e => {
@@ -11,9 +11,13 @@ class NewProject extends React.Component {
     };
     handleSubmit = e => {
         e.preventDefault();
-        this.props.dispatch({...this.state.form,createTime:new Date()});
+        this.props.firestore.collection("project").add({
+            ...this.state.form,
+            createTime: new Date(),
+            user: this.props.username
+        }).then(()=>{alert('success');window.location.href=''})
     };
-    render() {
+    render() {        
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit}>
@@ -42,7 +46,7 @@ class NewProject extends React.Component {
     }
 }
 
-export default connect(
-    null,
-    dtP
+export default compose(
+    withFirestore,
+    connect(({ firebase: { profile: { username } } }) => ({ username }))
 )(NewProject);
